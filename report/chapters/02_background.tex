@@ -1,0 +1,50 @@
+\section{Background}
+\label{sec:background}
+    The background of this project can be divided into two main parts.
+
+    \subsection{models}
+    \label{sec:models}
+        The first part is about the models used in this project. LSTM-RNNs have been used for
+        a long time in Natural Language Processing for its capabilities in capturing long-term
+        dependencies among data, overcoming the problem of vanishing gradients that affects RNNs
+        \citep{hochreiter1997long}. Such models implement a memory cell that can block or allow
+        the flow of information from the past to the future using three gates:
+        input, forget and output gates.\\
+        
+        Some simpler models, like the Gated Recurrent Unit (GRU) \citep{cho2014learning},
+        have been proposed to reduce the number of parameters, but still keeping the
+        same concept of memory cell. Both LSTM and GRU have been widely used and
+        show strenghts in different tasks, with LSTM being more suitable for
+        higher-complexity sequencies and GRU for simpler ones \citep{Cahuantzi_2023} \\
+
+        Transformers, on the other hand, are a more recent architecture \citep{vaswani2023attentionneed}
+        that has revolutionized the field of sequence processing and thus Natural
+        Language Processing, that uses self-attention mechanisms to capture 
+        relations among words, allowing parallelization too. \\
+
+        BERT \citep{devlin2019bert} and its variants, like RoBERTa \citep{liu2019robertarobustlyoptimizedbert},
+        are pre-trained models that are born from such Transformer architecture used
+        as encoders for text data. Trained on large corpora of text, can be 
+        fine-tuned on specific tasks to achieve brilliant results with very few 
+        variations in the architecture.
+
+    \subsection{related works}
+    \label{sec:related_works}
+        The second part is about the related works in the field of sentiment analysis.
+        Many works have been done in the past, using different approaches and models,
+        but the most recent ones focus on the use of Transformers and pre-trained models
+        like BERT and its variants.\\
+        
+        In particular, \citet{gupta2024comprehensivestudysentimentanalysis} provide a comprehensive
+        study on sentiment analysis, comparing different approaches and models, including
+        rule-based systems, machine learning classifiers, and deep learning models like LSTM
+        and Transformers. They highlight the strengths and weaknesses of each approach,
+        showing that while rule-based systems can be effective for specific tasks, machine learning
+        and deep learning models are more suitable for general-purpose sentiment analysis.\\
+        
+        An interesting work is done by \citet{wen2023sentiment}, who provides a
+        similar study on sentiment analysis using another variant of BERT, called
+        ERNIE, that uses knowledge graphs to improve the understanding of language
+        structure and semantics. They show that ERNIE outperforms BERT in various
+        knowledge-intensive tasks, while retaining comparable performance in 
+        other NLP tasks. \citep{zhang2019ernieenhancedlanguagerepresentation}

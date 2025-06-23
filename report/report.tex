@@ -1,0 +1,76 @@
+\documentclass{article}
+
+
+% ready for submission
+\usepackage[final]{hlt_project_template}
+\usepackage{natbib}
+\usepackage{float}
+\usepackage{graphicx}
+\bibliographystyle{plainnat}
+
+
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+
+\title{Trip Advisor Reviews Sentiment Analysis using RNN and Transformers} 
+
+
+\author{%
+  Salvatore Mastrangelo\\
+  \texttt{s.mastrangelo4@studenti.unipi.it}
+}
+
+
+\begin{document}
+
+
+\maketitle
+
+
+\begin{abstract}
+This report presents a comprehensive analysis of sentiment classification on Trip Advisor reviews using 
+Recurrent Neural Networks (RNNs) and Transformers. The study explores the effectiveness of these models 
+in understanding and predicting sentiment from textual data. A detailed methodology, experimental setup, 
+and results are provided, highlighting the strengths and weaknesses of each approach. In particular,
+given a rather small dataset of Trip Advisor reviews, the aim is to classify the sentiment of each review into both
+stars classes (1 to 5 stars) and ternary classes (positive, negative, neutral). RNN models are implemented
+using Long Short-Term Memory (LSTM), while Transformers are implemented using the BERT architecture, in
+particular the RoBERTa model. The results show that while Transformers require much less epochs to 
+converge, RNNs are able to achieve better performance in terms of accuracy and F1 score on such
+small dataset. On the other hand, Transformers show much better capabilities in terms of ambiguous reviews, 
+achieving a better F1 score and accuracy in the middle part of the scale (3-4 stars). 
+\end{abstract}
+
+\input{chapters/01_introduction}
+\input{chapters/02_background}
+\input{chapters/03_method}
+\input{chapters/04_experimental_analysis}
+\input{chapters/05_discussion}
+\input{chapters/06_conclusions}
+
+\bibliography{bib.bib}
+
+\small
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+
+\section{Appendix / supplemental material}
+
+
+Optionally include supplemental material (complete proofs, additional experiments and plots) in appendix.
+
+\end{document}

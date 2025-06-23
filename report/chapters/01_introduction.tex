@@ -1,0 +1,38 @@
+\section{Introduction}
+\label{sec:introduction}
+    \subsection{Nature of sentiment analysis}
+    \label{subsec:nature_of_sentiment_analysis}
+        Sentiment Analysis is a subfield of Natural Language Processing (NLP) that focuses on identifying
+        and classifying subjective information in text data. In particular, it allows to cathegorize the
+        sentiment expressed by pieces of text, such as reviews, comments, or social media posts, into 
+        predefined classes, that can be whether:
+        \begin{itemize}
+            \item favorable or unfavorable opinions towards a product, service, or entity,
+            \item expressed emotions such as joy, anger, sadness, or fear,
+            \item opinions about specific aspects or features of a product or service (aspect-based sentiment).
+        \end{itemize}
+        Sentiment analysis is widely used in various domains, including marketing, customer service, 
+        and social media, to gain insights into public opinion or provide control over allowed content,
+        like in the case of hate speech detection.
+
+    \subsection{Approaches to Sentiment Analysis}
+    \label{subsec:approaches_to_sentiment_analysis}
+        The methods used for sentiment analysis can be broadly categorized into: 
+        \begin{itemize}
+            \item \textbf{Rule-based systems}, which use lexicons and pattern-based approaches, typically hand-crafted,
+                    that require large efforts to develop and mantain \citep{gupta2024comprehensivestudysentimentanalysis}.
+            \item \textbf{Feature engineering and Machine Learning}, that is based on extraction of features as
+                    bag-of-words, n-grams, or word embeddings, followed by machine learning classifiers \citep{gupta2024comprehensivestudysentimentanalysis}.
+        \end{itemize}
+        In particular, machine learning models have gained in recent years a lot of attention, as recurrent models
+        like Long Short-Term Memory (LSTM) networks have shown effective capabilities in capturing relations among
+        distant words in a sentence \citep{staudemeyer2019understandinglstmtutorial}, and Transformers like
+        BERT \citep{devlin2019bert} and its variants have shown state-of-the-art performance in many NLP tasks.
+
+    \subsection{The project}
+    \label{subsec:the_project}
+        In this project, the focus is posed on implementation and evaluation two models, one based on LSTM-RNN 
+        and one based on RoBERTa \citep{liu2019robertarobustlyoptimizedbert}, a variant of BERT \citep{devlin2019bert},
+        that are able to classify the sentiment of hotel reviews, and return a score from 1 to 5 stars, as well
+        as a ternary classification of the sentiment expressed, that can be positive, negative or 
+        neutral.
