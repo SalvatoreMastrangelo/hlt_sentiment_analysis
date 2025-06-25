@@ -20,6 +20,8 @@
 \usepackage{microtype}      % microtypography
 \usepackage{xcolor}         % colors
 \usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{siunitx}    % for \SI and \num macros (percentages, large numbers)
 \usepackage{tikz}
 \usetikzlibrary{positioning}
 
@@ -35,22 +37,44 @@
 
 \begin{document}
 
-
 \maketitle
 
 
 \begin{abstract}
-This report presents a comprehensive analysis of sentiment classification on Trip Advisor reviews using 
-Recurrent Neural Networks (RNNs) and Transformers. The study explores the effectiveness of these models 
-in understanding and predicting sentiment from textual data. A detailed methodology, experimental setup, 
-and results are provided, highlighting the strengths and weaknesses of each approach. In particular,
-given a rather small dataset of Trip Advisor reviews, the aim is to classify the sentiment of each review into both
-stars classes (1 to 5 stars) and ternary classes (positive, negative, neutral). RNN models are implemented
-using Long Short-Term Memory (LSTM), while Transformers are implemented using the BERT architecture, in
-particular the RoBERTa model. The results show that while Transformers require much less epochs to 
-converge, RNNs are able to achieve better performance in terms of accuracy and F1 score on such
-small dataset. On the other hand, Transformers show much better capabilities in terms of ambiguous reviews, 
-achieving a better F1 score and accuracy in the middle part of the scale (3-4 stars). 
+This study investigates document-level sentiment classification of hotel reviews 
+by contrasting a lightweight Long Short-Term Memory Recurrent Neural Network (LSTM-RNN) 
+with a pretrained Transformer (RoBERTa-base) fine-tuned through Low-Rank Adaptation (LoRA). 
+The analysis is conducted on 18'273 English hotel reviews trimmed to 256 tokens and 
+split 72.3 / 12.7 / 15 \% for training, validation and testing, respectively, in a strongly 
+imbalanced five-star rating distribution.
+
+The LSTM comprises an embedding layer, a single LSTM layer with mean-pooled hidden states, 
+and a soft-max classifier, achieving convergence below 240 s on a consumer GPU. 
+A RoBERTa based model was fine-tuned with FP16 precision and a LoRA adapter, thet reduced 
+trainable parameters to 1.9 \% of the backbone, enabling single-GPU training.
+
+On the native dataset, RoBERTa outperformed the LSTM with 67 \% accuracy / weighted 
+F1 = 0.67 in the five-class task and 88 \% / 0.88 in the ternary task, compared with 58 \% / 0.58 and 84 \% / 0.83 for the LSTM, respectively. 
+Transformer models shows great capability in classifying minority ratings (1–3 stars). 
+
+These findings underscore three insights: (i) pre-trained attention models confer 
+a clear advantage on imbalanced, ambiguous opinion data; (ii) conventional RNNs remain 
+competitive under balanced conditions and deliver rapid training; (iii) LoRA enables 
+cost-effective fine-tuning of large encoders. The work thus provides a reproducible 
+benchmark and practical guidelines for choosing architectures under resource and 
+data-distribution constraints.
+
+% This report presents a comprehensive analysis of sentiment classification on Trip Advisor reviews using 
+% Recurrent Neural Networks (RNNs) and Transformers. The study explores the effectiveness of these models 
+% in understanding and predicting sentiment from textual data. A detailed methodology, experimental setup, 
+% and results are provided, highlighting the strengths and weaknesses of each approach. In particular,
+% given a rather small dataset of Trip Advisor reviews, the aim is to classify the sentiment of each review into both
+% stars classes (1 to 5 stars) and ternary classes (positive, negative, neutral). RNN models are implemented
+% using Long Short-Term Memory (LSTM), while Transformers are implemented using the BERT architecture, in
+% particular the RoBERTa model. The results show that while Transformers require much less epochs to 
+% converge, RNNs are able to achieve better performance in terms of accuracy and F1 score on such
+% small dataset. On the other hand, Transformers show much better capabilities in terms of ambiguous reviews, 
+% achieving a better F1 score and accuracy in the middle part of the scale (3-4 stars). 
 \end{abstract}
 
 \input{chapters/01_introduction}
@@ -65,12 +89,5 @@ achieving a better F1 score and accuracy in the middle part of the scale (3-4 st
 \small
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\appendix
-
-\section{Appendix / supplemental material}
-
-
-Optionally include supplemental material (complete proofs, additional experiments and plots) in appendix.
 
 \end{document}

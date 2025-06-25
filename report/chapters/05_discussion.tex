@@ -1,3 +1,39 @@
 \section{Discussion}
-Overall discussion on the results, relevant insights.
-Frame your considerations in the current landscape of relevant research.
+\label{sec:discussion}
+    The results obtained from the experiments conducted on the Trip Advisor 
+    reviews dataset provide valuable insights into the performance of
+    current state-of-the-art models for sentiment analysis. 
+    The comparison between the LSTM-RNN based models and the transformers
+    based ones, particularly RoBERTa, highlights how different architectures
+    can yield varying results depending on the nature of the dataset and the
+    specific applications. \\
+
+    LSTM models, despite requiring more epochs to converge, demostrated
+    quite impactul results, achieving levels of performance in understanding 
+    the sentiment expressed in the reviews that can be compared to Transformers
+    architectures. On the other hand, Transformers, demonstrated that can be quite elastic
+    in learning knowledge from very unbalanced datasets, particularly important
+    in case of big datasets where oversampling techniques are unfeasible. \\
+
+    In all the experiments, the hardest class to identify is the neutral one, 
+    corresponding to the 3-star reviews. This limitation is likely due to the 
+    inherent ambiguity in the language used in these reviews, which often
+    includes mixed terminology and sentiments. Both models seem to struggle to "grasp 
+    indecision" in the language, leading to lower accuracy and F1 scores.
+
+    \subsection{Limitations}
+    \label{sec:limitations}
+        The main limitation about the choice of which model to use resides in the
+        computational resources available, particularly at training time.
+        Being trained on a consumer-grade GPU, Transformers models require 
+        much more time to train, limited by the memory available on the GPU, besides
+        the bigger amount of trainable parameters. Due to these limitations, it 
+        was not possible to try larger models, such as larger versions of RoBERTa,
+        that could have potentially yielded better results \\
+
+        Another limitation is the size of the dataset, which is relatively small
+        with respect to the complexity of the models used. It is easy to lead a model
+        to overfitting, especially in the case of Transformers, which are known to
+        require large amount of data to generalize well. Furthermore, the specificity
+        of the dataset might lead to non generalizable results, thus limiting the 
+        expected performance in other topics. \\

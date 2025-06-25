@@ -1,2 +1,37 @@
 \section{Conclusions}
-Draw conclusions and possibly delineate future works / possible improvements.
+\label{sec:conclusions}
+    In the experiments conducted, two models were successfully implemented and trained 
+    to classify hotel reviews into star ratings and ternary sentiment classes. The approach
+    differed between the two models, and brought to two quite satisfactory results. \\
+    
+    As expected, the task was quite easier for high sentiment reviews, since the majority 
+    of the reviews belonged to that category, but the results showed that both models
+    performed far better than random guessing. It would be interesting to explore the
+    possible further expressiveness of the models considering the confidence scores 
+    of each prediction, since it would indicate far better understanding of the review
+    to fall into classes closer to the actual sentiment, particularly for the 
+    5-star classes. \\
+
+    The results also showed that the RNN model was able to achieve good performance, 
+    particularly in terms of precision and F1 score, but also in amount of time needed
+    to train the model, with merely 4 minutes in the worse case. The use of mean pooling
+    also brought to a good increment in training stability and time, also learning
+    better representations of the corpora. finally, the LSTM-RNN showed accuracy
+    rates of $58\%$ and $84\%$ which resemble state of the art results, aligned with
+    the results of other works in the literature. \\
+
+    The RoBERTa based model, on the other hand, were reliable in all the experiments, 
+    keeping almost all metrics above $80\%$ in 3-class classification. It emerged
+    once more how models based on Transformers suffer from lack of data, but are able
+    to still grasp context also in minority classes, such as the low score reviews.
+    On the other side, too much training on the same data easily leads to overfitting,
+    reducing performance and increasing the training time. Nevertheless, the amount
+    of computing power required to train and infer with such models demonstrated how
+    in some simpler cases is better to opt for lighter models. \\
+
+    Future work could focus on use of larger datasets or implement forms of data
+    augmentation to increment training quality. Also use some different form of 
+    readout layers might a be a topic of future investigation, maybe exploiting
+    attention mechanisms on LSTM hidden states before readout to improve
+    the context capabilities of the model.
+    

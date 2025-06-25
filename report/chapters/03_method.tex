@@ -67,7 +67,7 @@
                     \node (input) [input] {Input};
                     \node (embedding) [embed, right=of input] {Embedding};
                     \node (lstm) [lstm, right=of embedding] {LSTM + \\ Dropout};
-                    \node (fc) [dense, right=of lstm] {Dense \\ Layer};
+                    \node (fc) [dense, right=of lstm] {Mean Pooling + \\ Dense Layer};
                     \node (sm) [softmax, right=of fc] {Softmax};
                     \node (out) [output, right=of sm] {Output \\ Class};
 
@@ -89,21 +89,8 @@
             is applied to the LSTM layer to avoid overfitting.
             the model is trained for a maximum of 100 epochs, with early stopping
             kicking in almost always before the epochs upper limit, based on the 
-            accuracy on the validation set.
-            Ultimately, the hyperparameters used for the model are: \\
-            (\textbf{bold} values are the chosen ones)
-            \begin{table}[H]
-                \centering
-                \begin{tabular}{l c c c}
-                    \toprule
-                    \multicolumn{1}{l}{\textbf{Hyperparameter}} & \multicolumn{3}{c}{\textbf{Values}} \\                  \midrule
-                    Dropout & 0 & 0.1 & \textbf{0.3} \\
-                    Learning rate & 0.001 & 5e-4 & \textbf{3e-4} \\
-                    Patience & 0 & \textbf{5} & 10 \\
-                    \bottomrule
-                \end{tabular}
-                \label{tab:lstm_hyperparams}
-            \end{table}
+            f1 score on the validation set.\\
+
             The tokenizer used in this model, as said before, is the NLTK tokenizer,
             with a vocabulary size of 10002, corresponding to the 10000 most
             frequent words in the training set, plus the \texttt{<PAD>} and \texttt{<OOV>} tokens,
@@ -112,7 +99,7 @@
 
         \subsubsection{RoBERTa Transformer}
         \label{subsubsec:roberta}
-            The second model implemented is a RoBERTaForSequenceClassification transformer
+            The second model implemented is a \texttt{RoBERTaForSequenceClassification} transformer
             from the HuggingFace Transformers library, initialized at the \textit{roberta-base} 
             checkpoint. Furthermore, a classification MLP head is present, that takes information 
             from the first output of the RoBERTa transformer, which corresponds to the 
@@ -153,21 +140,8 @@
             with the optimization performed using the ADAMW optimizer \citep{loshchilov2019decoupledweightdecayregularization}
             It should be noted that the model is trained using fp16 mixed precision, allowing
             to speed up the training and reducing the memory usage, allowing the
-            training of the model on a single GPU with 6GB of memory.
-            The final hyperparameters used for the model are: \\
-            (\textbf{bold} values are the chosen ones)
-            \begin{table}[H]
-                \centering
-                \begin{tabular}{l c c c}
-                    \toprule
-                    \multicolumn{1}{l}{\textbf{Hyperparameter}} & \multicolumn{3}{c}{\textbf{Values}} \\                  \midrule
-                    LoRA Dropout & 0 & \textbf{0.1} & 0.3 \\
-                    LoRA Alpha & 16 & \textbf{32} & 64 \\
-                    Learning rate & 1e-5 & 2e-5 & \textbf{3e-5} \\
-                    \bottomrule
-                \end{tabular}
-                \label{tab:roberta_hyperparams}
-            \end{table}
+            training of the model on a single GPU with 6GB of memory.\\
+
             Furthermore, a Learning Rate Warmup \citep{kalra2024warmuplearningrateunderlying} of 10\% of the training steps
             is applied.
             The tokenizer used in this model is the \textit{roberta-base} tokenizer.

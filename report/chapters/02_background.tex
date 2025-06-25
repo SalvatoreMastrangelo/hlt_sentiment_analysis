@@ -1,39 +1,52 @@
 \section{Background}
 \label{sec:background}
-    The background of this project can be divided into two main parts.
+    The background of this project can be divided into two main parts:
+    the models used and the related works in the field of sentiment analysis. 
 
-    \subsection{models}
+    \subsection{Models}
     \label{sec:models}
-        The first part is about the models used in this project. LSTM-RNNs have been used for
+        The first part is about the models used in this project. Long Short-Term Memory networks have been used for
         a long time in Natural Language Processing for its capabilities in capturing long-term
-        dependencies among data, overcoming the problem of vanishing gradients that affects RNNs
-        \citep{hochreiter1997long}. Such models implement a memory cell that can block or allow
+        dependencies among data, breakthrough that allowed the overcoming of the problem of vanishing gradients that affects RNNs
+        \citep{hochreiter1997long}. Such models, unlike standard RNN, implement a memory cell that can block or allow
         the flow of information from the past to the future using three gates:
-        input, forget and output gates.\\
+        input, forget and output gates. Such gates allowed the development of more
+        complex sequence processing, making LSTM effective in tasks like 
+        machine translation, classification and text generation \\
         
-        Some simpler models, like the Gated Recurrent Unit (GRU) \citep{cho2014learning},
-        have been proposed to reduce the number of parameters, but still keeping the
+        Some simpler models, like the Gated Recurrent Unit (GRU), proposed by \citet{cho2014learning},
+        have been deployed as an alternative to LSTM to reduce the number of parameters, but still keeping the
         same concept of memory cell. Both LSTM and GRU have been widely used and
         show strenghts in different tasks, with LSTM being more suitable for
-        higher-complexity sequencies and GRU for simpler ones \citep{Cahuantzi_2023} \\
+        higher-complexity sequencies and GRU for simpler ones \citep{Cahuantzi_2023}, 
+        preferred in environments where computational efficiency is critical. \\
 
         Transformers, on the other hand, are a more recent architecture \citep{vaswani2023attentionneed}
         that has revolutionized the field of sequence processing and thus Natural
-        Language Processing, that uses self-attention mechanisms to capture 
-        relations among words, allowing parallelization too. \\
+        Language Processing. with the introduction of self-attention mechanisms they made 
+        possible to capture relations among words even at great distance. Such innovation allowed
+        the development of models with more complex context understanding capabilites.
+        Furthermore, since Attention is computed separately for each pair of tokens, it 
+        allowes massive parallelization too, advantage tackled by the use of GPUs. \\
 
-        BERT \citep{devlin2019bert} and its variants, like RoBERTa \citep{liu2019robertarobustlyoptimizedbert},
+        Nowadays, Transformers have set the state of the art standard in many NLP tasks.
+        In particular, BERT \citep{devlin2019bert} and its variants, like RoBERTa \citep{liu2019robertarobustlyoptimizedbert},
         are pre-trained models that are born from such Transformer architecture used
         as encoders for text data. Trained on large corpora of text, can be 
         fine-tuned on specific tasks to achieve brilliant results with very few 
-        variations in the architecture.
+        variations in the architecture, effectively performing transfer learning very
+        efficiently and with a small amount of data. \citep{torrey2010transfer}
 
-    \subsection{related works}
+
+    \subsection{Related Works}
     \label{sec:related_works}
         The second part is about the related works in the field of sentiment analysis.
         Many works have been done in the past, using different approaches and models,
         but the most recent ones focus on the use of Transformers and pre-trained models
-        like BERT and its variants.\\
+        like BERT and its variants due to the much improved performance with respect
+        to RNN. Nevertheless, it should be noted that until the introduction of Transformers
+        they were the State of The Art models to perform tasks like Machine translation \citep{cho2014learning}
+        and next sentence prediction \citep{ganai2019predicting}\\
         
         In particular, \citet{gupta2024comprehensivestudysentimentanalysis} provide a comprehensive
         study on sentiment analysis, comparing different approaches and models, including
@@ -44,7 +57,12 @@
         
         An interesting work is done by \citet{wen2023sentiment}, who provides a
         similar study on sentiment analysis using another variant of BERT, called
-        ERNIE, that uses knowledge graphs to improve the understanding of language
+        ERNIE \citep{zhang2019ernieenhancedlanguagerepresentation}, that uses knowledge graphs to improve the understanding of language
         structure and semantics. They show that ERNIE outperforms BERT in various
         knowledge-intensive tasks, while retaining comparable performance in 
-        other NLP tasks. \citep{zhang2019ernieenhancedlanguagerepresentation}
+        other NLP tasks. \\
+
+        In summary, the field of sentiment analysis has seen a shift from traditional
+        rule-based systems and machine learning classifiers to deep learning models.
+        In particular, the use of pre-trained models has become a standard practice,
+        on which this work is based too. \\ 
